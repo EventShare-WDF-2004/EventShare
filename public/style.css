@@ -235,3 +235,10 @@ section {
 .poll-form-yourOption {
   margin-left: 50px;
 }
+
+.footer {
+  flex-shrink: 0;
+  text-align: center;
+  background-color: tomato;
+  color: white;
+}

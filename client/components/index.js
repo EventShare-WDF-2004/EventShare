@@ -4,6 +4,7 @@
  * having to figure out which file they belong to!
  */
 export {default as Navbar} from './navbar'
+export {default as Footer} from './Footer'
 export {default as UserHome} from './user-home'
 export {default as AddTask} from './addTask'
 export {default as TaskList} from './taskList'
