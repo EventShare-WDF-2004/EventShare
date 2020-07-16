@@ -22,6 +22,11 @@ import {
   getAllNotifications,
   resetAllNotifications
 } from '../store/notifications'
+import AddCircleIcon from '@material-ui/icons/AddCircle'
+import LockIcon from '@material-ui/icons/Lock'
+import {Link} from 'react-router-dom'
+import LockOpenIcon from '@material-ui/icons/LockOpen'
+import HomeIcon from '@material-ui/icons/Home'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -57,7 +62,11 @@ const Navbar = ({handleClick, isLoggedIn, notifications}) => {
 
   return (
     <div className={classes.root}>
-      <AppBar className="" position="static">
+      <AppBar
+        className=""
+        position="static"
+        style={{backgroundColor: '#74D2CA'}}
+      >
         <Toolbar>
           <Typography variant="h5" className={classes.logoText}>
             <Button component={RouterLink} to="/home" color="inherit">
@@ -81,27 +90,61 @@ const Navbar = ({handleClick, isLoggedIn, notifications}) => {
             </Badge>
           </IconButton>
 
-          <IconButton
+          {/* <IconButton
             edge="start"
             color="inherit"
             aria-label="menu"
             onClick={() => setOpen(true)}
           >
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
+          {isLoggedIn ? (
+            <div>
+              {/* <ListItem button component={RouterLink} to="/home">
+                <ListItemText primary="Home" />
+              </ListItem>
+
+              <ListItem onClick={handleClick} button>
+                <ListItemText primary="Logout" />
+              </ListItem> */}
+              <React.Fragment>
+                <Link to="/home">
+                  <Button startIcon={<HomeIcon />}> Home </Button>
+                </Link>
+
+                <Button onClick={handleClick} startIcon={<LockOpenIcon />}>
+                  {' '}
+                  lOGOUT{' '}
+                </Button>
+              </React.Fragment>
+            </div>
+          ) : (
+            <div>
+              {/* The navbar will show these links before you log in */}
+
+              <React.Fragment>
+                <Link to="/signup">
+                  <Button startIcon={<AddCircleIcon />}> SIGNUP </Button>
+                </Link>
+                <Link to="/login">
+                  <Button startIcon={<LockIcon />}> lOGIN </Button>
+                </Link>
+              </React.Fragment>
+            </div>
+          )}
         </Toolbar>
       </AppBar>
 
-      <Drawer
+      {/* <Drawer
         anchor="right"
         open={open}
         onClick={() => setOpen(false)}
         onClose={() => setOpen(false)}
         onKeyDown={() => setOpen(false)}
-      >
-        <List className={classes.sideDrawer} component="nav">
-          {/* The navbar will show these links after you log in */}
-          {isLoggedIn ? (
+      > */}
+      {/* <List className={classes.sideDrawer} component="nav"> */}
+      {/* The navbar will show these links after you log in */}
+      {/* {isLoggedIn ? (
             <div>
               <ListItem button component={RouterLink} to="/home">
                 <ListItemText primary="Home" />
@@ -114,16 +157,17 @@ const Navbar = ({handleClick, isLoggedIn, notifications}) => {
           ) : (
             <div>
               {/* The navbar will show these links before you log in */}
-              <ListItem button component={RouterLink} to="/login">
+
+      {/* <ListItem button component={RouterLink} to="/login">
                 <ListItemText primary="Login" />
               </ListItem>
               <ListItem button component={RouterLink} to="/signup">
                 <ListItemText primary="Sign Up" />
               </ListItem>
             </div>
-          )}
-        </List>
-      </Drawer>
+          )} */}
+      {/* </List> */}
+      {/* </Drawer> */}
     </div>
   )
 }

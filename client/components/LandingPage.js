@@ -43,23 +43,27 @@ const Home = () => {
         </Typography>
         <Box className="ctaBtn" mt="7rem">
           <Button
+            style={{backgroundColor: '#000000', spacing: 5}}
             className={classes.ctaBtn}
             color="secondary"
             component={Link}
             to="/signup"
             variant="contained"
             size="large"
+            mr={8}
           >
             Get Started
           </Button>
 
           <Button
+            style={{backgroundColor: '#000000', spacing: 8}}
             className={classes.ctaBtn}
             color="primary"
             component={Link}
             to="/Login"
             variant="contained"
             size="large"
+            mr={8}
           >
             Login
           </Button>
