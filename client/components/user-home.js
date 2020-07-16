@@ -104,12 +104,12 @@ export const UserHome = props => {
                       >
                         {ev.event.title}
                       </ListItemText>
+
                       <DropMenuList
                         eventId={ev.event.id}
                         eventLink={`events/${ev.event.id}/edit`}
                         delete={props.deleteEvent}
                       />
-
                       <div>
                         <ListItemText secondary={ev.attending}>
                           <Link to={`events/${ev.event.id}`}>DETAILS</Link>
@@ -140,8 +140,10 @@ export const UserHome = props => {
                       >
                         {ev.event.title}
                       </ListItemText>
-                      <div className="float-left">
-                        <Link to={`events/${ev.event.id}`}>DETAILS</Link>
+                      <div>
+                        <ListItemText secondary={ev.attending}>
+                          <Link to={`events/${ev.event.id}`}>DETAILS</Link>
+                        </ListItemText>
                       </div>
                     </ListItem>
                   </div>

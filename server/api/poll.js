@@ -1,5 +1,8 @@
 const router = require('express').Router()
-const {Poll, Options, Answers} = require('../db/models')
+const {Poll, Options, Answers, User, Event} = require('../db/models')
+const main = require('./nodemailer')
+const PollEmail = require('../../client/components/AdditionalForms/PollEmail')
+
 module.exports = router
 
 const dummyData = {
@@ -16,7 +19,6 @@ const dummyData2 = {
 
 router.get('/:pollId', async (req, res, next) => {
   try {
-    console.log('ISNIDE', req.params)
     const currPoll = await Poll.findByPk(req.params.pollId, {
       include: Options
     })
@@ -44,7 +46,7 @@ router.post('/create', async (req, res, next) => {
     const poll = {
       title: req.body.title,
       userId: req.user.id,
-      eventid: req.body.eventId
+      eventId: req.body.eventId
     }
 
     const newPoll = await Poll.create(poll)
@@ -54,6 +56,24 @@ router.post('/create', async (req, res, next) => {
       let option = await Options.create({title})
       option.setPoll(newPoll.id)
     }
+
+    const currEvent = await Event.findByPk(req.body.eventId)
+    const guests = await currEvent.getUsers({
+      attributes: ['firstName', 'email']
+    })
+
+    for (let i = 0; i < guests.length; i++) {
+      let member = guests[i]
+      const emailTemplate = PollEmail(
+        member.firstName,
+        req.user.firstName,
+        req.body.eventId,
+        poll.title
+      )
+
+      await main(member.email, req.user.firstName, emailTemplate)
+    }
+
     res.status(201).json(newPoll)
   } catch (error) {
     next(error)

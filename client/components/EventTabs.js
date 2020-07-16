@@ -27,25 +27,29 @@ class EventTabs extends React.Component {
     const eventId = this.props.match.params.id
     const currEvent = this.props.currEvent || []
     return (
-      <div className="">
-        <Typography
-          align="center"
-          component="h1"
-          variant="h5"
-          color="secondary"
-          className="eventTitle"
-        >
-          {currEvent.title}🎉
-        </Typography>
-        <Box align="center" className="dropDownMenu">
-          <DropMenuList
-            eventId={currEvent.id}
-            eventLink="/edit"
-            delete={this.props.deleteEvent}
-          />
-        </Box>
+      <div>
+        <div display="flex">
+          <Box display="flex" justifyContent="center">
+            <Typography
+              align="center"
+              component="h1"
+              variant="h5"
+              color="secondary"
+              className="eventTitle"
+            >
+              {currEvent.title}🎉
+            </Typography>
+            <Box className="eventTitle">
+              <DropMenuList
+                eventId={currEvent.id}
+                eventLink={`/events/${eventId}/edit`}
+                delete={this.props.deleteEvent}
+              />
+            </Box>
+          </Box>
+        </div>
         <TabContext value={this.state.value}>
-          <AppBar position="static" color="secondary" style={{zIndex: 3000}}>
+          <AppBar position="static" color="secondary">
             <TabList
               onChange={this.handleChange.bind(this)}
               aria-label="simple tabs example"
@@ -75,10 +79,10 @@ class EventTabs extends React.Component {
                 to={`/events/${eventId}/polls/1`}
               />
               <Tab
-                label="Invite"
+                label="Photos"
                 value="5"
                 component={RouterLink}
-                to={`/events/${eventId}/invite`}
+                to={`/events/${eventId}/photos`}
               />
             </TabList>
           </AppBar>

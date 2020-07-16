@@ -144,8 +144,8 @@ export class PollForm extends React.Component {
           </Button>
           <div className="poll-form-yourOption">
             <h4>Your Options</h4>
-            {this.state.options.map(option => {
-              return <p key={option.id}>{option}</p>
+            {this.state.options.map((option, i) => {
+              return <p key={i}>{option}</p>
             })}
           </div>
           <Button

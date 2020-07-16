@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
+import MoreVertIcon from '@material-ui/icons/MoreVert'
 import EditTaskForm from './EditTaskForm'
 import {Link} from 'react-router-dom'
 
@@ -24,7 +25,7 @@ export default function DeleteEditTasksMenu(props) {
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <MoreHorizIcon />
+        <MoreVertIcon />
       </Button>
       <Menu
         id="simple-menu"

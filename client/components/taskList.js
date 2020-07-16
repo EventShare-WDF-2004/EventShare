@@ -137,13 +137,13 @@ export class TaskList extends React.Component {
                               className="float-left"
                             />
                           )}
-                          <DeleteEditTasksMenu
-                            eventId={this.props.match.params.id}
-                            taskId={task.id}
-                            deleteTask={this.props.deleteTask}
-                          />
                         </Grid>
                       </Grid>
+                      <DeleteEditTasksMenu
+                        eventId={this.props.match.params.id}
+                        taskId={task.id}
+                        deleteTask={this.props.deleteTask}
+                      />
                     </ListItem>
 
                     <Divider />
@@ -236,13 +236,13 @@ export class TaskList extends React.Component {
                               className="float-left"
                             />
                           )}
-                          <DeleteEditTasksMenu
-                            eventId={this.props.match.params.id}
-                            taskId={task.id}
-                            deleteTask={this.props.deleteTask}
-                          />
                         </Grid>
                       </Grid>
+                      <DeleteEditTasksMenu
+                        eventId={this.props.match.params.id}
+                        taskId={task.id}
+                        deleteTask={this.props.deleteTask}
+                      />
                     </ListItem>
                     <Divider />
                   </div>

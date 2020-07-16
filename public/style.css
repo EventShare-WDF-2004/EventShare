@@ -236,9 +236,13 @@ section {
   margin-left: 50px;
 }
 
-.footer {
-  flex-shrink: 0;
-  text-align: center;
-  background-color: tomato;
-  color: white;
+/*FOR EDIT/CREATE EVENT */
+.twoInputFields {
+  max-width: '36ch';
+  justify-content: 'center';
+}
+
+/*FOR EVENT NAV BAR */
+.eventNavBar {
+  display: flex;
 }

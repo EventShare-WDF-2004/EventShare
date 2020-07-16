@@ -12,7 +12,7 @@ import EditEvent from './EditEvent'
 import EditTaskForm from './EditTaskForm'
 import PollForm from './PollForm'
 import Vote from './vote'
-
+import PhotoFeed from './PhotoFeed'
 /**
  * COMPONENT
  */
@@ -30,6 +30,7 @@ export class EventRoutes extends Component {
           <Route exact path="/events/:id/polls/:pollId" component={Vote} />
 
           <Route exact path="/events/:id/polls/vote" component={Vote} />
+          <Route exact path="/events/:id/photos/" component={PhotoFeed} />
 
           <Route exact path="/events/:id/edit" component={EditEvent} />
           <Route

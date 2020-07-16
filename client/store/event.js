@@ -1,5 +1,6 @@
 import axios from 'axios'
 import history from '../history'
+import swal from 'sweetalert'
 
 const GET_ONE_EVENT = 'GET_EVENT'
 const ADD_EVENT = 'ADD_EVENT'
@@ -80,7 +81,6 @@ export const updateEvent = (event, id) => {
     try {
       const {data} = await axios.put(`/api/events/${id}/edit`, event)
       dispatch(getEvent(data))
-      alert('Your changes have been made') //to be changed for better alert
       history.push(`/events/${id}/details`)
     } catch (err) {
       console.log(err)
@@ -104,7 +104,7 @@ export const createEvent = event => {
   return async dispatch => {
     try {
       const {data} = await axios.post('/api/events/add', event)
-      dispatch(getEvent(data))
+      // dispatch(getEvent(data))
       history.push(`/events/${data.id}`)
     } catch (err) {
       console.log('ERROR', err)

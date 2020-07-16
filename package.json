@@ -50,6 +50,7 @@
         "express": "^4.16.4",
         "express-session": "^1.15.1",
         "history": "^4.9.0",
+        "html-template-tag": "^3.2.0",
         "morgan": "^1.9.1",
         "nodemailer": "^6.4.10",
         "nodemailer-sendgrid-transport": "^0.2.0",

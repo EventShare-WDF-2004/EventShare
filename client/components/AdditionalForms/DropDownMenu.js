@@ -2,10 +2,11 @@ import React from 'react'
 import Button from '@material-ui/core/Button'
 import MenuItem from '@material-ui/core/MenuItem'
 import Menu from '@material-ui/core/Menu'
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
-import {Link} from 'react-router-dom'
+import MoreVertIcon from '@material-ui/icons/MoreVert'
+import swal from 'sweetalert'
+import {withRouter, Link as RouterLink} from 'react-router-dom'
 
-export default function MenuListComposition(props) {
+function MenuListComposition(props) {
   const [anchorEl, setAnchorEl] = React.useState(null)
 
   const handleClick = event => {
@@ -18,6 +19,7 @@ export default function MenuListComposition(props) {
 
   const handleDelete = () => {
     var shouldDelete = confirm('Do you really want to delete this event?')
+
     if (shouldDelete) {
       props.delete(props.eventId)
     }
@@ -30,7 +32,7 @@ export default function MenuListComposition(props) {
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <MoreHorizIcon />
+        <MoreVertIcon />
       </Button>
       <Menu
         id="simple-menu"
@@ -40,10 +42,14 @@ export default function MenuListComposition(props) {
         onClose={handleClose}
       >
         <MenuItem onClick={handleDelete}>Delete</MenuItem>
-        <Link to={props.eventLink}>
-          <MenuItem onClick={handleClose}>Edit</MenuItem>
-        </Link>
+        <RouterLink to={props.eventLink}>
+          <MenuItem onClick={handleClose} style={{color: 'black'}}>
+            Edit
+          </MenuItem>
+        </RouterLink>
       </Menu>
     </div>
   )
 }
+
+export default withRouter(MenuListComposition)
