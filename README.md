@@ -26,7 +26,7 @@ parties, among other activities.
 
 We deploy automatically, via continuous deployment with Travis 🚀
 
-Check it out: https://event-share.herokuapp.com/
+Check it out: https://event-share-app.herokuapp.com/
 
 *(the upkeep of this deployment now lives [here](https://github.com/kyvycodes/event-share-app))*
 
